@@ -1,3 +1,8 @@
 tasks:
   - init: 'yarn install'
     command: yarn start
+
+vscode:
+  extensions:
+    - esbenp.prettier-vscode@6.4.0:951c840b4441f6eb0171a511ccec96ee
+    - ms-vscode.vscode-typescript-tslint-plugin@1.2.2:d274373c4100d0d3c4b7751c6c262221
