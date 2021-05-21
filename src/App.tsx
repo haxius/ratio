@@ -22,6 +22,8 @@ const App: FC = () => {
                   item: { amount: parseFloat(amount), note },
                 },
               });
+              setAmount("");
+              setNote("");
             }}
             target="#"
           >
