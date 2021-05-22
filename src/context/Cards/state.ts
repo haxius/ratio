@@ -1,4 +1,4 @@
-import { ICard } from "../../models";
+import { ICard, ILedgerItem } from "../../models";
 
 const DefaultState = [
   {
@@ -9,15 +9,15 @@ const DefaultState = [
       {
         amount: 2.23,
         note: "Pear",
-      },
+      } as ILedgerItem,
       {
         amount: 1.29,
         note: "Bananas",
-      },
+      } as ILedgerItem,
       {
         amount: 9.95,
         note: "Steak",
-      },
+      } as ILedgerItem,
     ],
   } as ICard,
 ];

@@ -1,66 +1,59 @@
 import { ICard, ILedgerItem } from "../../models";
-import { TCardsState } from "./models";
+import { ICardsActions } from "./models";
 
-export const addCard = (state: TCardsState, newCard: ICard): TCardsState => [
-  ...state,
-  newCard,
-];
+export const addCard = (dispatch: any, card: ICard): void => {
+  dispatch({ type: "ADD_CARD", payload: card });
+};
 
-export const removeCard = (state: TCardsState, index: number): TCardsState => {
-  const newState = [...state];
-  newState.splice(index, 1);
-  return newState;
+export const removeCard = (dispatch: any, index: number): void => {
+  dispatch({ type: "REMOVE_CARD", payload: index });
 };
 
 export const addLedgerItem = (
-  state: TCardsState,
+  dispatch: any,
   index: number,
   item: ILedgerItem
-): TCardsState => {
-  const newState = [...state];
-  newState[index].ledger.push(item);
-  return newState;
+): void => {
+  dispatch({ type: "ADD_LEDGER_ITEM", payload: { index, item } });
 };
 
 export const overwriteLedgerItem = (
-  state: TCardsState,
+  dispatch: any,
   index: number,
   itemIndex: number,
   item: ILedgerItem
-): TCardsState => {
-  const newState = [...state];
-  newState[index].ledger[itemIndex] = item;
-  return newState;
+): void => {
+  dispatch({
+    type: "OVERWRITE_LEDGER_ITEM",
+    payload: { index, itemIndex, item },
+  });
 };
 
 export const removeLedgerItem = (
-  state: TCardsState,
+  dispatch: any,
   index: number,
   itemIndex: number
-): TCardsState => {
-  const newState = [...state];
-  newState[index].ledger.splice(itemIndex, 1);
-  return newState;
+): void => {
+  dispatch({
+    type: "REMOVE_LEDGER_ITEM",
+    payload: { index, itemIndex },
+  });
 };
 
-export const balanceLedger = (
-  state: TCardsState,
-  index: number
-): TCardsState => {
-  const newState = [...state];
-  newState[index].ledger = [
-    {
-      amount: newState[index].ledger
-        .map(({ amount }: ILedgerItem) => amount)
-        .reduce((a: number, c: number) => a + c),
-      note: "balanced",
-    },
-  ];
-  return newState;
+export const balanceLedger = (dispatch: any, index: number): void => {
+  dispatch({ type: "BALANCE_LEDGER", payload: index });
 };
 
-export const clearLedger = (state: TCardsState, index: number): TCardsState => {
-  const newState = [...state];
-  newState[index].ledger = [];
-  return newState;
+export const clearLedger = (dispatch: any, index: number): void => {
+  dispatch({ type: "CLEAR_LEDGER", payload: index });
 };
+
+export default {
+  addCard,
+  removeCard,
+  addLedgerItem,
+  overwriteLedgerItem,
+  removeLedgerItem,
+  balanceLedger,
+  clearLedger,
+} as ICardsActions;

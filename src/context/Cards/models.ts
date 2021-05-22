@@ -19,6 +19,10 @@ export interface ICardsStateAction {
 }
 
 export interface ICardsContext {
-  cardsState: TCardsState;
-  dispatchCards: any;
+  cards: TCardsState;
+  [key: string]: any;
+}
+
+export interface ICardsActions {
+  [key: string]: any;
 }

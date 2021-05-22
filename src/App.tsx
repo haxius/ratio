@@ -3,7 +3,9 @@ import Card from "./components/Card";
 import { useCardsContext } from "./context/Cards";
 
 const App: FC = () => {
-  const { cardsState: cards, dispatchCards } = useCardsContext();
+  const { cards, addLedgerItem, balanceLedger, clearLedger } =
+    useCardsContext();
+
   const [amount, setAmount] = useState("");
   const [note, setNote] = useState("");
 
@@ -15,12 +17,9 @@ const App: FC = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatchCards({
-                type: "ADD_LEDGER_ITEM",
-                payload: {
-                  index: cardIndex,
-                  item: { amount: parseFloat(amount), note },
-                },
+              addLedgerItem(cardIndex, {
+                amount: parseFloat(amount),
+                note,
               });
               setAmount("");
               setNote("");
@@ -49,9 +48,7 @@ const App: FC = () => {
               maxWidth: "100px",
               textAlign: "center",
             }}
-            onClick={() =>
-              dispatchCards({ type: "BALANCE_LEDGER", payload: cardIndex })
-            }
+            onClick={() => balanceLedger(cardIndex)}
           >
             balance
           </div>
@@ -63,9 +60,7 @@ const App: FC = () => {
               maxWidth: "100px",
               textAlign: "center",
             }}
-            onClick={() =>
-              dispatchCards({ type: "CLEAR_LEDGER", payload: cardIndex })
-            }
+            onClick={() => clearLedger(cardIndex)}
           >
             clear
           </div>

@@ -1,6 +1,7 @@
 import React, { createContext, FC, useContext, useReducer } from "react";
+import Actions from "./actions";
 import { ICardsContext } from "./models";
-import Reducer from "./reducer";
+import Reducer from "./reducers";
 import DefaultState from "./state";
 
 export const CardsContext = createContext<ICardsContext | undefined>(undefined);
@@ -16,12 +17,18 @@ export const useCardsContext = () => {
 };
 
 const CardsContextProvider: FC = ({ children }) => {
-  const [cardsState, dispatchCards] = useReducer(Reducer, DefaultState);
+  const [cards, dispatchCards] = useReducer(Reducer, DefaultState);
+
+  const context = {
+    cards,
+  } as ICardsContext;
+
+  for (let action in Actions) {
+    context[action] = (...args: any) => Actions[action](dispatchCards, ...args);
+  }
 
   return (
-    <CardsContext.Provider value={{ cardsState, dispatchCards }}>
-      {children}
-    </CardsContext.Provider>
+    <CardsContext.Provider value={context}>{children}</CardsContext.Provider>
   );
 };
 
