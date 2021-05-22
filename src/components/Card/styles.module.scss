@@ -1,0 +1,100 @@
+@import "../../styles/theme-dependencies";
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  > header {
+    flex-direction: column;
+    display: flex;
+
+    > h1 {
+      margin: 0;
+      text-transform: uppercase;
+      @include font-size(10);
+    }
+
+    > h4 {
+      margin: 0;
+      @include font-size(5);
+    }
+  }
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  @include margin-top(5);
+
+  > div {
+    flex: 1 0;
+    flex-direction: column;
+    align-items: flext-start;
+    justify-content: center;
+  }
+
+  > div:first-child {
+    display: flex;
+    @include margin-right(2);
+  }
+
+  > div:last-child {
+    display: flex;
+    @include margin-left(2);
+  }
+
+  &Label {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    color: $color-gray-light;
+    @include font-size(4);
+    @include margin-bottom(2);
+  }
+
+  &Label:nth-child(3) {
+    @include margin-top(4);
+  }
+
+  &Value {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    @include font-size(8);
+  }
+
+  &Currency {
+    > span:first-child {
+      color: $color-gray-light;
+      @include font-size(4);
+      vertical-align: text-top;
+      position: relative;
+      top: 5px;
+    }
+    > span:nth-last-child(1),
+    > span:nth-last-child(2) {
+      @include font-size(4);
+      vertical-align: text-top;
+      position: relative;
+      top: 5px;
+    }
+    > span:nth-last-child(3) {
+      display: none;
+    }
+  }
+
+  &Ratio {
+    @include font-size(16);
+  }
+
+  &RatioWithDecimal {
+    > span:nth-last-child(1) {
+      @include font-size(4);
+      vertical-align: text-top;
+      position: relative;
+      top: 5px;
+    }
+    > span:nth-last-child(2) {
+      display: none;
+    }
+  }
+}

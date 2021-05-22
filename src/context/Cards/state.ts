@@ -2,9 +2,9 @@ import { ICard, ILedgerItem } from "../../models";
 
 const DefaultState = [
   {
-    name: "Some Card",
-    use: "Groceries",
-    limit: 1250.0,
+    name: "QUICKSILVER",
+    use: "Goods & Groceries",
+    limit: 12500.0,
     ledger: [
       {
         amount: 2.23,
@@ -15,7 +15,11 @@ const DefaultState = [
         note: "Bananas",
       } as ILedgerItem,
       {
-        amount: 9.95,
+        amount: 1.29,
+        note: "Bananas Again",
+      } as ILedgerItem,
+      {
+        amount: 12319.95,
         note: "Steak",
       } as ILedgerItem,
     ],

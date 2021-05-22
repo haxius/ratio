@@ -1,0 +1,14 @@
+.container {
+  @include padding(5);
+  width: 100%;
+}
+
+.hero {
+  @include padding(5);
+  background-color: $color-bg;
+  border-radius: $grid-base * 1;
+
+  &Centered {
+    text-align: center;
+  }
+}

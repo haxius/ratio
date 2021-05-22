@@ -14,6 +14,9 @@ body {
 body {
   color: $body-fg-color;
   background-color: $body-bg-color;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
 }
 
 img,
