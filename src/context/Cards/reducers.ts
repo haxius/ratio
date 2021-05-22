@@ -55,9 +55,11 @@ export const balanceLedger = (
   const newState = [...state];
   newState[index].ledger = [
     {
-      amount: newState[index].ledger
-        .map(({ amount }: ILedgerItem) => amount)
-        .reduce((a: number, c: number) => a + c),
+      amount: newState[index].ledger.length
+        ? newState[index].ledger
+            .map(({ amount }: ILedgerItem) => amount)
+            .reduce((a: number, c: number) => a + c)
+        : 0,
       note: "balanced",
     },
   ];
