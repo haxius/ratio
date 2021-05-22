@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, Fragment } from "react";
 import Card from "./components/Card";
 import { useCardsContext } from "./context/Cards";
 import "./styles/app.scss";
@@ -9,10 +9,10 @@ const App: FC = () => {
   return (
     <>
       {cards.map((card, cardIndex) => (
-        <>
-          <Card card={card} key={cardIndex} />
+        <Fragment key={cardIndex}>
+          <Card card={card} />
           {/* <Form index={cardIndex} /> */}
-        </>
+        </Fragment>
       ))}
     </>
   );
