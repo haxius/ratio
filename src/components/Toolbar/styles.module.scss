@@ -21,3 +21,20 @@
     rgba(18, 18, 18, 1) 100%
   );
 }
+
+.toolbarOpen {
+  position: fixed;
+  top: 100vh;
+  opacity: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: $color-bg;
+  z-index: 20;
+  transition: all 200ms ease;
+
+  &Active {
+    top: 0;
+    opacity: 1;
+  }
+}
