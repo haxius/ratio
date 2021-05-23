@@ -30,7 +30,7 @@
   }
 }
 
-.entry:first-child {
+.entry:nth-child(2) {
   @include margin-top(5);
 }
 
@@ -42,9 +42,6 @@
   margin-bottom: -1 * $grid-base * 5;
   pointer-events: none;
   z-index: 10;
-}
-
-.gradientTop {
   top: 0;
   background: linear-gradient(
     0deg,
@@ -54,7 +51,7 @@
 }
 
 .gradientBottom {
-  bottom: 0;
+  bottom: $grid-base * 10;
   top: 100%;
   transform: translateY(-100%);
   background: linear-gradient(

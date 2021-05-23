@@ -1,0 +1,22 @@
+@import "../../styles/theme-dependencies";
+
+.toolbar {
+  display: flex;
+  position: relative;
+  height: 50px;
+}
+
+.gradient {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: $grid-base * 5;
+  pointer-events: none;
+  z-index: 10;
+  top: -1 * $grid-base * 5;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 18, 0) 0%,
+    rgba(18, 18, 18, 1) 100%
+  );
+}

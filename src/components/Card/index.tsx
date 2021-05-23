@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 import currency from "../../utils/currency";
 import stringToSpans from "../../utils/stringToSpans";
 import Ledger from "../Ledger";
+import Toolbar from "../Toolbar";
 
 interface CardProps {
   card: ICard;
@@ -63,6 +64,7 @@ const Card: FC<CardProps> = ({ card: { name, use = "", limit, ledger } }) => {
         </div>
       </header>
       <Ledger ledger={ledger} />
+      <Toolbar />
     </div>
   );
 };
