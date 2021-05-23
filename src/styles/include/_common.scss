@@ -4,11 +4,31 @@
 }
 
 .hero {
-  @include padding(5);
+  @include padding(3);
   background-color: $color-bg;
   border-radius: $grid-base * 1;
 
   &Centered {
     text-align: center;
+  }
+}
+
+@mixin currency($super-font-size: 4, $top: 5px) {
+  > span:first-child {
+    color: $color-gray-light;
+    @include font-size($super-font-size);
+    vertical-align: text-top;
+    position: relative;
+    top: $top;
+  }
+  > span:nth-last-child(1),
+  > span:nth-last-child(2) {
+    @include font-size($super-font-size);
+    vertical-align: text-top;
+    position: relative;
+    top: $top;
+  }
+  > span:nth-last-child(3) {
+    display: none;
   }
 }

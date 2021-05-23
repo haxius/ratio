@@ -4,6 +4,7 @@ import { ICard } from "../../models";
 import styles from "./styles.module.scss";
 import currency from "../../utils/currency";
 import stringToSpans from "../../utils/stringToSpans";
+import Ledger from "../Ledger";
 
 interface CardProps {
   card: ICard;
@@ -36,7 +37,11 @@ const Card: FC<CardProps> = ({ card: { name, use = "", limit, ledger } }) => {
             />
             <div className={styles.statusLabel}>LIMIT</div>
             <div
-              className={cc([styles.statusCurrency, styles.statusValue])}
+              className={cc([
+                styles.statusCurrency,
+                styles.statusValue,
+                styles.statusLimit,
+              ])}
               dangerouslySetInnerHTML={{
                 __html: currency(limit, { split: true }),
               }}
@@ -57,11 +62,7 @@ const Card: FC<CardProps> = ({ card: { name, use = "", limit, ledger } }) => {
           </div>
         </div>
       </header>
-      {/* <div>
-        {ledger.map((item, index) => (
-          <LedgerEntry key={`${name}-${index}`} item={item} />
-        ))}
-      </div> */}
+      <Ledger ledger={ledger} />
     </div>
   );
 };

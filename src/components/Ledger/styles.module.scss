@@ -1,0 +1,65 @@
+@import "../../styles/theme-dependencies";
+
+.ledger {
+  width: auto;
+  overflow-y: scroll;
+  flex: 1 1;
+  @include margin-top(0);
+}
+
+.entry {
+  display: flex;
+  width: auto;
+  @include margin-top(2);
+
+  > div:first-child {
+    color: $color-white;
+    flex: 0 1;
+    font-weight: $font-weight-bold;
+    @include currency();
+    @include font-size(8);
+    @include margin-right(4);
+  }
+
+  > div:last-child {
+    flex: 1 0;
+    font-weight: $font-weight-bold;
+    color: $color-gray-light;
+    @include font-size(4);
+    align-self: center;
+  }
+}
+
+.entry:first-child {
+  @include margin-top(5);
+}
+
+.gradient {
+  position: sticky;
+  left: 0;
+  width: 100%;
+  height: $grid-base * 5;
+  margin-bottom: -1 * $grid-base * 5;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.gradientTop {
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(18, 18, 18, 0) 0%,
+    rgba(18, 18, 18, 1) 100%
+  );
+}
+
+.gradientBottom {
+  bottom: 0;
+  top: 100%;
+  transform: translateY(-100%);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 18, 0) 0%,
+    rgba(18, 18, 18, 1) 100%
+  );
+}

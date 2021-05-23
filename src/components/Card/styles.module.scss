@@ -3,6 +3,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 
   > header {
     flex-direction: column;
@@ -63,20 +64,12 @@
   }
 
   &Currency {
-    > span:first-child {
-      color: $color-gray-light;
-      @include font-size(4);
-      vertical-align: text-top;
-      position: relative;
-      top: 5px;
-    }
+    @include currency();
+  }
+
+  &Limit {
     > span:nth-last-child(1),
-    > span:nth-last-child(2) {
-      @include font-size(4);
-      vertical-align: text-top;
-      position: relative;
-      top: 5px;
-    }
+    > span:nth-last-child(2),
     > span:nth-last-child(3) {
       display: none;
     }
