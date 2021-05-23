@@ -6,7 +6,7 @@
 .hero {
   @include padding(3);
   background-color: $color-bg;
-  border-radius: $grid-base * 1;
+  border-radius: $grid-base * 0.5;
 
   &Centered {
     text-align: center;
