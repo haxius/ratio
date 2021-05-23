@@ -3,7 +3,8 @@
 .toolbar {
   display: flex;
   position: relative;
-  height: 50px;
+  height: 60px;
+  justify-content: space-between;
 }
 
 .gradient {
@@ -13,7 +14,7 @@
   height: $grid-base * 5;
   pointer-events: none;
   z-index: 10;
-  top: -1 * $grid-base * 5;
+  top: (-1 * $grid-base * 5) + 1;
   background: linear-gradient(
     180deg,
     rgba(18, 18, 18, 0) 0%,

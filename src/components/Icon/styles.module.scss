@@ -1,0 +1,11 @@
+@import "../../styles/theme-dependencies";
+
+.icon {
+  align-self: flex-end;
+  @include padding(3);
+
+  > img {
+    width: 100%;
+    height: auto;
+  }
+}
