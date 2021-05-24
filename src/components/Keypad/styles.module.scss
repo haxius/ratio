@@ -1,0 +1,35 @@
+@import "../../styles/theme-dependencies";
+
+.keypad {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.key {
+  color: $body-fg-color;
+  display: flex;
+  flex: 1 1;
+  justify-content: center;
+  text-align: center;
+  @include font-size(5);
+  @include margin(2);
+  border: 0;
+  outline: none !important;
+  user-select: none;
+
+  &:hover:active {
+    background: $color-gray-light;
+    color: $color-gray;
+  }
+
+  > img {
+    width: $grid-base * 5;
+    height: auto;
+    user-select: none;
+  }
+}

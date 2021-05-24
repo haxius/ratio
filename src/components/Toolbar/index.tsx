@@ -2,6 +2,7 @@ import cc from "classcat";
 import React, { FC, Fragment } from "react";
 import { useToolbarContext } from "../../context/Toolbar";
 import Icon from "../Icon";
+import Keypad from "../Keypad";
 import styles from "./styles.module.scss";
 
 interface ToolbarProps {}
@@ -31,7 +32,7 @@ const Toolbar: FC<ToolbarProps> = () => {
           { [styles.toolbarOpenActive]: toolbarOpen },
         ])}
       >
-        {" "}
+        <Keypad />
       </div>
     </>
   );
