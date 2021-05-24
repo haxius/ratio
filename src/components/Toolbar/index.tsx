@@ -10,6 +10,8 @@ interface ToolbarProps {}
 const Toolbar: FC<ToolbarProps> = () => {
   const { toolbarOpen, setToolbarOpen } = useToolbarContext();
   const handleToolbarOpenClick = () => setToolbarOpen(true);
+  const handleBackClick = () => setToolbarOpen(false);
+
   return (
     <>
       <div className={styles.toolbar}>
@@ -32,7 +34,7 @@ const Toolbar: FC<ToolbarProps> = () => {
           { [styles.toolbarOpenActive]: toolbarOpen },
         ])}
       >
-        <Keypad />
+        <Keypad onBack={handleBackClick} />
       </div>
     </>
   );
