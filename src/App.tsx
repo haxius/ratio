@@ -10,7 +10,7 @@ const App: FC = () => {
     <>
       {cards.map((card, cardIndex) => (
         <Fragment key={cardIndex}>
-          <Card card={card} />
+          <Card card={card} cardIndex={cardIndex} />
         </Fragment>
       ))}
     </>

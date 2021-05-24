@@ -9,9 +9,13 @@ import Toolbar from "../Toolbar";
 
 interface CardProps {
   card: ICard;
+  cardIndex: number;
 }
 
-const Card: FC<CardProps> = ({ card: { name, use = "", limit, ledger } }) => {
+const Card: FC<CardProps> = ({
+  card: { name, use = "", limit, ledger },
+  cardIndex,
+}) => {
   const balance: number = ledger.length
     ? ledger.map(({ amount }) => amount).reduce((a, c) => a + c)
     : 0;
@@ -64,7 +68,7 @@ const Card: FC<CardProps> = ({ card: { name, use = "", limit, ledger } }) => {
         </div>
       </header>
       <Ledger ledger={ledger} />
-      <Toolbar />
+      <Toolbar cardIndex={cardIndex} />
     </div>
   );
 };

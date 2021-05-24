@@ -12,15 +12,17 @@ interface KeypadProps {
   onBack?: any;
   onSubmit?: any;
   onChange?: any;
+  value: string;
+  setValue: any;
 }
 
 const Keypad: FC<KeypadProps> = ({
   onBack = () => {},
   onSubmit = () => {},
   onChange = () => {},
+  value,
+  setValue,
 }) => {
-  const [value, setValue] = useState("");
-
   const setValueAndNotify = (newValue: string): void => {
     setValue(newValue);
     onChange(newValue);
