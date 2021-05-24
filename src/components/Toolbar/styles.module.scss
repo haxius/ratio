@@ -44,6 +44,7 @@
 .form {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -51,4 +52,18 @@
 
 .amount {
   @include font-size(15);
+}
+
+.note {
+  > input {
+    border: 0;
+    background: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    color: $color-gray-light;
+    @include font-size(5);
+    @include margin-top(5);
+    @include margin-bottom(2);
+  }
 }

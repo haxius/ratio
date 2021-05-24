@@ -5,23 +5,39 @@ import { useToolbarContext } from "../../context/Toolbar";
 import currency from "../../utils/currency";
 import Icon from "../Icon";
 import Keypad from "../Keypad";
+import TextInput from "../TextInput";
 import styles from "./styles.module.scss";
 
 interface ToolbarProps {
   cardIndex: number;
 }
 
+const defaultAmount = "";
+const defaultNote = "ADD NOTE?";
+
 const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
   const { addLedgerItem } = useCardsContext();
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(defaultAmount);
+  const [note, setNote] = useState(defaultNote);
   const { toolbarOpen, setToolbarOpen } = useToolbarContext();
   const handleToolbarOpenClick = () => setToolbarOpen(true);
-  const handleBackClick = () => setToolbarOpen(false);
   const handleAmountChange = (newAmount: string) => setAmount(newAmount);
+  const handleNoteChange = (newNote: string) =>
+    setNote(newNote ? newNote : "ADD NOTE?");
+
+  const handleBackClick = () => {
+    setAmount(defaultAmount);
+    setNote(defaultNote);
+    setToolbarOpen(false);
+  };
 
   const handleSubmit = () => {
-    addLedgerItem(cardIndex, { amount: parseInt(amount) / 100, note: "N/A" });
-    setAmount("");
+    addLedgerItem(cardIndex, {
+      amount: parseInt(amount) / 100,
+      note: note === defaultNote ? "N/A" : note,
+    });
+    setAmount(defaultAmount);
+    setNote(defaultNote);
     setToolbarOpen(false);
   };
 
@@ -50,6 +66,14 @@ const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
         <div className={styles.form}>
           <div className={styles.amount}>
             {amount ? currency(parseFloat(amount) / 100) : currency(0)}
+          </div>
+          <div className={styles.note}>
+            <TextInput
+              value={note}
+              onChange={handleNoteChange}
+              showPlaceholder={note === defaultNote}
+              maxLength={160}
+            />
           </div>
         </div>
         <Keypad

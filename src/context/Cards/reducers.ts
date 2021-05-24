@@ -23,7 +23,7 @@ export const addLedgerItem = (
   item: ILedgerItem
 ): TCardsState => {
   const newState = [...state];
-  newState[index].ledger.push(item);
+  newState[index].ledger.unshift(item);
   return newState;
 };
 
