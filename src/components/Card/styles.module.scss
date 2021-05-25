@@ -23,6 +23,12 @@
   }
 }
 
+.hamburger {
+  position: absolute;
+  top: $grid-base * 5;
+  right: $grid-base * 0;
+}
+
 .status {
   display: flex;
   flex-direction: row;

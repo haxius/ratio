@@ -6,6 +6,8 @@ import currency from "../../utils/currency";
 import stringToSpans from "../../utils/stringToSpans";
 import Ledger from "../Ledger";
 import Toolbar from "../Toolbar";
+import Icon from "../Icon";
+import { useContextMenuContext } from "../../context/ContextMenu";
 
 interface CardProps {
   card: ICard;
@@ -16,6 +18,8 @@ const Card: FC<CardProps> = ({
   card: { name, use = "", limit, ledger },
   cardIndex,
 }) => {
+  const { setCardIndex, setContextMenuOpen } = useContextMenuContext();
+
   const balance: number = ledger.length
     ? ledger.map(({ amount }) => amount).reduce((a, c) => a + c)
     : 0;
@@ -26,9 +30,19 @@ const Card: FC<CardProps> = ({
 
   if (ratio.length < 2) ratio = `0${ratio}`;
 
+  const handleHamburgerClick = () => {
+    setCardIndex(cardIndex);
+    setContextMenuOpen(true);
+  };
+
   return (
     <div className={cc([styles.container, styles.card])}>
       <header>
+        <Icon
+          icon={"/icon-hamburger.png"}
+          className={styles.hamburger}
+          onClick={handleHamburgerClick}
+        />
         <h1>{name}</h1>
         {use ? <h4>{use}</h4> : <React.Fragment />}
         <div className={styles.status}>

@@ -1,5 +1,6 @@
 import React, { FC, Fragment } from "react";
 import Card from "./components/Card";
+import ContextMenu from "./components/ContextMenu";
 import { useCardsContext } from "./context/Cards";
 import "./styles/app.scss";
 
@@ -13,6 +14,7 @@ const App: FC = () => {
           <Card card={card} cardIndex={cardIndex} />
         </Fragment>
       ))}
+      <ContextMenu />
     </>
   );
 };

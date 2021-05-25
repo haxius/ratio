@@ -1,0 +1,46 @@
+@import "../../styles/theme-dependencies";
+
+.contextMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.66);
+  visibility: hidden;
+  pointer-events: none;
+
+  &Active {
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: $grid-base * 5;
+  right: $grid-base * 5;
+  background: $body-bg-color;
+  @include padding(5);
+
+  &Item {
+    color: $body-fg-color;
+    background: transparent;
+    border: 0;
+    outline: none !important;
+    user-select: none;
+    @include font-size(5);
+    // text-align: left;
+    text-transform: uppercase;
+    user-select: none;
+    @include margin(0);
+    @include padding(0);
+    @include margin-bottom(5);
+
+    &:last-child {
+      @include margin(0);
+    }
+  }
+}
