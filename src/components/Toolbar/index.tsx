@@ -49,8 +49,6 @@ const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
     clearAndCloseToolbar();
   };
 
-  console.log("Amount", amount);
-
   return (
     <>
       <div className={styles.toolbar}>
