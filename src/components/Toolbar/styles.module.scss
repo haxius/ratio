@@ -67,3 +67,10 @@
     @include margin-bottom(2);
   }
 }
+
+.header {
+  flex: 0 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

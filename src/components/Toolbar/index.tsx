@@ -14,7 +14,8 @@ interface ToolbarProps {
 }
 
 const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
-  const { addLedgerItem, overwriteLedgerItem } = useCardsContext();
+  const { addLedgerItem, overwriteLedgerItem, removeLedgerItem } =
+    useCardsContext();
 
   const {
     toolbarOpen,
@@ -31,6 +32,11 @@ const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
   const handleAmountChange = (newAmount: string) => setAmount(newAmount);
   const handleNoteChange = (newNote: string) =>
     setNote(newNote ? newNote : "ADD NOTE?");
+
+  const handleTrashClick = () => {
+    removeLedgerItem(cardIndex, itemIndex);
+    clearAndCloseToolbar();
+  };
 
   const handleBackClick = () => clearAndCloseToolbar();
 
@@ -68,9 +74,22 @@ const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
       <div
         className={cc([
           styles.toolbarOpen,
+          styles.container,
           { [styles.toolbarOpenActive]: toolbarOpen },
         ])}
       >
+        <div className={styles.header}>
+          <Icon icon="/icon-undo.png" width={64} onClick={handleBackClick} />
+          {typeof itemIndex === "number" ? (
+            <Icon
+              icon="/icon-trash.png"
+              width={64}
+              onClick={handleTrashClick}
+            />
+          ) : (
+            <div> </div>
+          )}
+        </div>
         <div className={styles.form}>
           <div className={styles.amount}>
             {amount ? currency(parseFloat(amount) / 100) : currency(0)}

@@ -15,7 +15,7 @@ const Ledger: FC<LedgerProps> = ({ ledger }) => {
 
   const handleItemClick = (item: ILedgerItem, index: number) => {
     setItemIndex(index);
-    setAmount(item.amount.toString().replace(/\./g, ""));
+    setAmount(item.amount.toFixed(2).replace(/\./g, ""));
     setNote(item.note);
     setToolbarOpen(true);
   };
