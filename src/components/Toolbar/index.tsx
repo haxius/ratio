@@ -1,7 +1,8 @@
 import cc from "classcat";
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment } from "react";
 import { useCardsContext } from "../../context/Cards";
-import { useToolbarContext } from "../../context/Toolbar";
+import { defaultNote, useToolbarContext } from "../../context/Toolbar";
+import { ILedgerItem } from "../../models";
 import currency from "../../utils/currency";
 import Icon from "../Icon";
 import Keypad from "../Keypad";
@@ -12,34 +13,43 @@ interface ToolbarProps {
   cardIndex: number;
 }
 
-const defaultAmount = "";
-const defaultNote = "ADD NOTE?";
-
 const Toolbar: FC<ToolbarProps> = ({ cardIndex }) => {
-  const { addLedgerItem } = useCardsContext();
-  const [amount, setAmount] = useState(defaultAmount);
-  const [note, setNote] = useState(defaultNote);
-  const { toolbarOpen, setToolbarOpen } = useToolbarContext();
+  const { addLedgerItem, overwriteLedgerItem } = useCardsContext();
+
+  const {
+    toolbarOpen,
+    setToolbarOpen,
+    itemIndex,
+    note,
+    setNote,
+    amount,
+    setAmount,
+    clearAndCloseToolbar,
+  } = useToolbarContext();
+
   const handleToolbarOpenClick = () => setToolbarOpen(true);
   const handleAmountChange = (newAmount: string) => setAmount(newAmount);
   const handleNoteChange = (newNote: string) =>
     setNote(newNote ? newNote : "ADD NOTE?");
 
-  const handleBackClick = () => {
-    setAmount(defaultAmount);
-    setNote(defaultNote);
-    setToolbarOpen(false);
-  };
+  const handleBackClick = () => clearAndCloseToolbar();
 
   const handleSubmit = () => {
-    addLedgerItem(cardIndex, {
+    const ledgerItem: ILedgerItem = {
       amount: parseInt(amount) / 100,
       note: note === defaultNote ? "N/A" : note,
-    });
-    setAmount(defaultAmount);
-    setNote(defaultNote);
-    setToolbarOpen(false);
+    };
+
+    if (typeof itemIndex === "number") {
+      overwriteLedgerItem(cardIndex, itemIndex, ledgerItem);
+    } else {
+      addLedgerItem(cardIndex, ledgerItem);
+    }
+
+    clearAndCloseToolbar();
   };
+
+  console.log("Amount", amount);
 
   return (
     <>
