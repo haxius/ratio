@@ -1,4 +1,5 @@
 import { Route } from "../context/Router/models";
+import EditCard from "./EditCard";
 import Main from "./Main";
 
-export default [Main] as Route[];
+export default [EditCard, Main] as Route[];
