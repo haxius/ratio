@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Key from "./Key";
 import styles from "./styles.module.scss";
 

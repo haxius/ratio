@@ -1,10 +1,10 @@
 import React, { FC, Fragment } from "react";
-import Card from "./components/Card";
-import ContextMenu from "./components/ContextMenu";
-import { useCardsContext } from "./context/Cards";
-import "./styles/app.scss";
+import Card from "../../components/Card";
+import ContextMenu from "../../components/ContextMenu";
+import { useCardsContext } from "../../context/Cards";
+import { Route } from "../../context/Router/models";
 
-const App: FC = () => {
+const Main: FC = () => {
   const { cards } = useCardsContext();
 
   return (
@@ -19,4 +19,7 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default {
+  name: "",
+  component: Main,
+} as Route;

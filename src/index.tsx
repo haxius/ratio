@@ -1,19 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import CardsContextProvider from "./context/Cards";
-import ToolbarContextProvider from "./context/Toolbar";
-import ContextMenuContextProvider from "./context/ContextMenu";
+import GlobalContext from "./context/Global";
+import Router from "./context/Router";
+import routes from "./routes";
+import "./styles/app.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToolbarContextProvider>
-      <CardsContextProvider>
-        <ContextMenuContextProvider>
-          <App />
-        </ContextMenuContextProvider>
-      </CardsContextProvider>
-    </ToolbarContextProvider>
+    <GlobalContext>
+      <Router routes={routes} />
+    </GlobalContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
